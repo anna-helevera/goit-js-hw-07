@@ -5,7 +5,7 @@ import { galleryItems } from './gallery-items.js';
 
   
 const gallery = document.querySelector('.gallery');
-const galleryItemEls = document.querySelectorAll('.gallery__item');
+
 const galleryImages = document.querySelectorAll('.gallery__image');
 
 const createGalleryItemMarkup = ({ original, preview, description }) => {
@@ -31,9 +31,35 @@ gallery.addEventListener('click', event => {
   `);
 
   instance.show();
+  // додаємо прослуховувач події keydown для документа
+  const handleKeyDown = event => {
+    if (event.key === 'Escape') {
+      instance.close(); // закриваємо модальне вікно
+    }
+  };
+
+  document.addEventListener('keydown', handleKeyDown);
+
+  // додаємо флаг, який позначає, що відкрите модальне вікно
+  let isModalOpen = true;
+
+  // додаємо обробник події закриття модального вікна
+  instance.element().addEventListener('click', event => {
+    if (event.target.nodeName !== 'IMG') {
+      isModalOpen = false;
+      document.removeEventListener('keydown', handleKeyDown); // видаляємо прослуховувач події keydown
+    }
+  });
 });
 
 
+// Забороняємо перенаправлення користувача на іншу сторінку при кліку на посилання
+const galleryLinks = document.querySelectorAll('.gallery__link');
+galleryLinks.forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault();
+  });
+});
 
 // Додаємо обробник подій для кожного зображення в галереї
 galleryImages.forEach(image => {
