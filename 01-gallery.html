@@ -7,13 +7,28 @@
     <title>Image gallery</title>
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basiclightbox@5.2.1/dist/basicLightbox.min.css" integrity="sha384-7LxKD4spM4KjY4FpJ+G0q6Jqya6UjO2Uv8g+eBU/P3qanHnmLlwQoJumZjgY04fR" crossorigin="anonymous">
+
   </head>
   <body>
     <p><a href="index.html">Go back</a></p>
 
     <!-- Add gallery items to this list -->
-    <ul class="gallery"></ul>
+    <ul class="gallery">
+      
+<!--          
+            <li class="gallery__item">
+              <a class="gallery__link" href="{{ item.original }}">
+                <img class="gallery__image" src="{{ item.preview }}" alt="{{ item.description }}" />
+              </a>
+            </li> -->
+         
+       
+    </ul>
 
+    
+    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.2.1/dist/basicLightbox.min.js" integrity="sha384-SV7XuKjy8qq7hj4bJ4QHPm8W34BcFvDpupGmSbJl8W+X9qwvkJHJz+v6KjT62G1T" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.2.1/dist/basicLightbox.min.js"></script>
     <script src="js/01-gallery.js" type="module"></script>
   </body>
 </html>
